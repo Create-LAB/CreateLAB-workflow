@@ -1,0 +1,100 @@
+# python 代码规范
+
+## 为什么要规范代码？
+
+1. 增加易读性，容易维护，能够提高效率
+2. 好的代码规范能够体现一个程序员的专业性
+
+## python命名规范
+
+1.类的命名方法
+大驼峰命名：类名中的所有单词的首字母都要大写，并且不使用特殊字符、下划线和数字。
+
+~~~python
+class LinearClassify(object): ✔️
+class Linear_Classify(object): ❌
+class linearclassify(object): ❌
+~~~
+
+2.函数命名
+函数的命名要全小写，多单词时要用下划线连接
+
+~~~python
+def linear_classify(): ✔️
+def __linear_classify(): ✔️ #内建函数
+def Linear_classify(): ❌ 
+def linearclassify(): ❌
+~~~
+
+3.常量命名
+全部大写字母，可加下划线和数字
+
+~~~python
+MAX_SIZE=100
+~~~
+
+## python注释
+
+复杂的逻辑要写注释，这样方便阅读与维护
+单行注释： 如果注释独占一行，那么#顶头，空一格之后再写注释; 如果是行尾注释，那么先空两格写#，之后再空一格写注释的内容
+
+~~~python
+# 代码注释
+def linear_classify():  # 代码注释
+~~~
+
+## docstrings
+
+在python中，比较推崇在代码中写文档，代码即文档，比较方便，容易维护，直观，一致。通过编写docstrings能够非常方便的编写api文档。尽量为每个主要的函数方法编写docstrings。
+
+推荐使用numpy格式的docstrings，可以在pycharm里设置docstrings的格式。
+
+~~~python
+def detect(
+        cfg,
+        data_cfg,
+        weights,
+        images='data/samples',  # input folder
+        output='output',  # output folder
+        fourcc='mp4v',
+        img_size=416,
+        conf_thres=0.5,
+        nms_thres=0.5,
+        save_txt=False,
+        save_images=True,
+        webcam=True
+):
+    """
+    Loading the trained model to detect whether a individual is wearing a mask.
+    If not,a voice alert will be given.
+    Parameters
+    ----------
+    cfg: str
+        The path of the model cfg.
+    data_cfg: str
+        The path of the data cfg.
+        eg. data/mask.data
+    weights: str
+        The path of the weights file.
+    images: str,'data/samples'
+        The path of the images for detect.
+    output: str
+        If you want to save the detected result, you should set it.
+    fourcc: str
+        Four character code,use in cv2.VideoWriter_fourcc
+    img_size: int
+        The size of the image loaded.
+    conf_thres: int
+    nms_thres: int
+    save_txt: bool
+        If ypu want to write bounding boxes and labels of detections into txt.
+    save_images: bool
+        If you want to save image.
+    webcam: bool
+        If you want to open the camera.
+    """
+~~~
+
+##  python代码的排版
+
+对于python代码的排版问题，只要使用autopep8就能够自动的排版，其使用方法在网上都能够查到。写完代码之后使用该工具对代码进行排版的规范化。
